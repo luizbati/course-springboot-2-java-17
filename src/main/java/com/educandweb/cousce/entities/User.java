@@ -1,13 +1,18 @@
 package com.educandweb.cousce.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_user")
 public class User implements Serializable{
 	
 	
@@ -16,27 +21,31 @@ public class User implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String name;
 	private String email;
 	private String password;
 	private String phone;
 	
+	@OneToMany(mappedBy ="client")
+	private List<Order>orders = new ArrayList<>();
+	
+	
 		
-	public User(Long id, String name, String email, String password, String phone) {
+	public User(long id, String name, String email, String password, String phone) {
 		
-		this.id = (Long) id;
+		this.id = (long) id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id =  (Long) id;
 	}
 
@@ -88,6 +97,10 @@ public class User implements Serializable{
 		User other = (User) obj;
 		return Objects.equals(email, other.email) && id == other.id && Objects.equals(name, other.name)
 				&& Objects.equals(password, other.password) && Objects.equals(phone, other.phone);
+	}
+
+	public List<Order> getOrders() {
+		return orders;
 	}
 
 	

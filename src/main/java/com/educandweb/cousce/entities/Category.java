@@ -9,7 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.educandweb.cousce.services.ProductService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -22,7 +26,9 @@ public class Category implements Serializable{
 	private Long id;
 	private String name;
 	
-	private Set<Product> products = new HashSet<>();
+	@JsonIgnore
+	@ManyToMany(mappedBy= "categories")
+	private Set<ProductService> products = new HashSet<>();
 	
 	public Category() {
 		
@@ -49,7 +55,7 @@ public class Category implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setProducts(Set<Product> products) {
+	public void setProducts(Set<ProductService> products) {
 		this.products = products;
 	}
 

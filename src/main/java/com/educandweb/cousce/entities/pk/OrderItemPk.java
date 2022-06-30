@@ -8,7 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.educandweb.cousce.entities.Order;
-import com.educandweb.cousce.entities.Product;
 
 
 @Embeddable

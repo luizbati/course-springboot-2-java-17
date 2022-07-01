@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.educandweb.cousce.entities.Category;
 import com.educandweb.cousce.entities.Order;
 import com.educandweb.cousce.entities.OrderItem;
+import com.educandweb.cousce.entities.Payment;
 import com.educandweb.cousce.entities.Product;
 import com.educandweb.cousce.entities.User;
 import com.educandweb.cousce.entities.enuns.OrderStatus;
@@ -72,6 +73,11 @@ public class TestConfig implements CommandLineRunner{
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
+		
+		Payment pay1 = new Payment (null, Instant.parse("2019-06-20T21:53:07Z"),01);
+		01.setPayment(pay1);
+		
+		orderRepository.save(o1);
 		
 	}
 

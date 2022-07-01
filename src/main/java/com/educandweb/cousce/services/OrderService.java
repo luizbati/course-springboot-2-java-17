@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.educandweb.cousce.entities.Order;
+import com.educandweb.cousce.entities.OrderItem;
 import com.educandweb.cousce.repositories.OrderRepository;
 
 import java.util.List;
@@ -16,12 +17,12 @@ public class OrderService {
 	@Autowired
 	private OrderRepository repository;
 	
-	public List<Order> findAll(){
+	public List<OrderItem> findAll(){
 		return repository.findAll();
 		
 	}
-	public Order findById(Long id) {
-		Optional<Order> obj = repository.findById(null);
+	public OrderItem findById(Long id) {
+		Optional<OrderItem> obj = repository.findById(null);
 		return obj.get();
 		
 	}

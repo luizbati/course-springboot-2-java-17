@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "tb_product")

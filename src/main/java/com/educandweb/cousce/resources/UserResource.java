@@ -1,5 +1,6 @@
 package com.educandweb.cousce.resources;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,10 @@ public class UserResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<User>insert (@RequestBody User obj){
+	public ResponseEntity<User>insert (@RequestBody User obj, Object ServletURIComponentBuilder){
 		obj = service.insert(obj);
-		return ResponseEntity.ok().body(obj);
+		URI uri = ServletURIComponentBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).body(obj);
 	}
 	
 	

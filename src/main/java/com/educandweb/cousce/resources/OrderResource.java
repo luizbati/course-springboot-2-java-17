@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.educandweb.cousce.entities.Order;
+import com.educandweb.cousce.entities.OrderItem;
 import com.educandweb.cousce.services.OrderService;
 
 @RestController
@@ -20,14 +21,14 @@ public class OrderResource {
 	private OrderService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Order>> findAll(){
-		List<Order>list = service.findAll();
+	public ResponseEntity<List<OrderItem>> findAll(){
+		List<OrderItem>list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping( value= "/{id}")
-	public ResponseEntity<Order>findById(@PathVariable Long id){
-		Order obj = service.findById(id);
+	public ResponseEntity<OrderItem>findById(@PathVariable Long id){
+		OrderItem obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

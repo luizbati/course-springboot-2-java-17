@@ -9,5 +9,7 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<OrderItem,Long>{
 
     public void saveAll(List<Order> asList);
+
+    public void save(Order o1);
 	
 }
